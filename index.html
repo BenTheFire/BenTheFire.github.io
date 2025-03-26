@@ -54,15 +54,19 @@
     
     <style>
         :root {
-    --bg-color: #E9F9EE;
-    --text-color: #303030;
-    --box-color: #DCECE1;
+            --bg-color: #E9F9EE;
+            --text-color: #303030;
+            --box-color: #DCECE1;
+            --education-li-background: #ffffff;
+            --education-li-color: #000000;
         }
 
         .dark-mode {
             --bg-color: #1e1e1e;
             --text-color: #ffffff;
             --box-color: #333333;
+            --education-li-background: #222222;
+            --education-li-color: #ffffff;
         }
 
         body {
@@ -127,7 +131,8 @@
 
         #educationList li {
             font-size: 1.2em;
-            background: white;
+            background: var(--education-li-background);
+            color: var(--education-li-color);
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 5px;
