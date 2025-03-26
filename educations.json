@@ -1,0 +1,12 @@
+{
+    "education": {
+        "en": [
+            { "school": "Árpád-Házi Szent Margit High School (Hungary, Kőszeg)", "degree": "High School Diploma", "year": "Graduated: 2023" },
+            { "school": "University of Pannonia", "degree": "B.Sc. in Computer Science", "year": "Expected Graduation: 2026" }
+        ],
+        "hu": [
+            { "school": "Árpád-Házi Szent Margit Gimnázium", "degree": "Érettségi", "year": "Érettségi éve: 2023" },
+            { "school": "Pannon Egyetem", "degree": "Programtervező Informatikus Alapképzés", "year": "Várható végzés: 2026" }
+        ]
+    }
+}

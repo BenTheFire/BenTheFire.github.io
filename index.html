@@ -4,12 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleCVmain.css">
-    <title>Benedek's Github Page</title>
+    <script src="script.js"></script>
+    <title>Github - Benedek Pongrácz</title>
 </head>
 <body>
-    <h1 id="nameTitle">Pongrácz Benedek</h1>
-    <p id="jobTitle">Junior Web Developer</p>
+    <!-- Profile Section -->
+    <div id="profileContainer">
+        <img id="profilePicture" src="profilePicture.jpg" alt="Self Picture">
+        <div id="profileText">
+            <h1 id="nameTitle">Pongrácz Benedek</h1>
+            <p id="jobTitle">Junior Web Developer</p>
+        </div>
+    </div>
 
-    <div id="educationsContainer"></div>
+    <!-- Education Section -->
+    <div id="educationsContainer">
+        <h2>Education</h2>
+        <ul id="educationList"></ul>
+    </div>
+
+     <!-- Buttons in top right corner -->
+     <div id="controls">
+        <div class="flag-container">
+            <img src="flag-en.svg" alt="English" onclick="switchLanguage('en')" class="flag">
+            <img src="flag-hu.svg" alt="Hungarian" onclick="switchLanguage('hu')" class="flag">
+        </div>
+        <label for="darkModeSwitch">Dark Mode</label>
+        <label class="switch">
+            <input type="checkbox" onclick="toggleDarkMode()">
+            <span class="slider round"></span>
+        </label>
+    </div>
 </body>
 </html>
