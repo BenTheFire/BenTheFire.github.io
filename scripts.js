@@ -39,7 +39,7 @@ const data = {
     "education": {
         "en": [
             { "school": "Árpád-Házi Szent Margit High School At: Kőszeg, Hungary", "degree": "High School Diploma", "year": "Graduated: 2023", "site": "https://arpadhazi.hu/hu/gimnazium/", "schoolLogo": "aszmg.png" },
-            { "school": "University of Pannonia, Faculty of Information Technology", "degree": "B.Sc. in Computer Science (Ongoing)", "year": "Expected Graduation: 2026", "site": "https://mik.uni-pannon.hu/en/", "schoolLogo": "pannon.jpg" }
+            { "school": "University of Pannonia, Faculty of Information Technology", "degree": "B.Sc. in Computer Science (Ongoing)", "year": "Expected Graduation: 2026", "site": "https://mik.uni-pannon.hu/en/", "schoolLogo": "Pannon.png" }
         ],
         "hu": [
             { "school": "Árpád-Házi Szent Margit Gimnázium", "degree": "Érettségi", "year": "Érettségi éve: 2023", "site": "https://arpadhazi.hu/hu/gimnazium/", "schoolLogo": "aszmg.png" },
