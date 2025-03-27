@@ -7,19 +7,161 @@
 
     <script>
         let currentLanguage = 'en'; // Default language
-
+        
+        // Data for profile and education, made for scalability and easy translation
         let data = {
+            "res":{
+                "en":{
+                    "contacts":"Contacts",
+                    "education":"Education",
+                    "achievements":"Achievements",
+                    "skills":"Skills and Competencies",
+                    "level":"Level",
+                },
+                "hu":{
+                    "contacts":"Elérhetőségek",
+                    "education":"Tanulmányok",
+                    "achievements":"Eredmények",
+                    "skills":"Képességek és Kompetenciák",
+                    "level":"Szint",
+                }
+            },
+
+            "profile": {
+                "en": {
+                    "name": "Benedek Pongrácz",
+                    "job": "Computer Science Student at University of Pannonia"
+                },
+                "hu": {
+                    "name": "Pongrácz Benedek",
+                    "job": "Programtervező Informatikus Hallgató itt: Pannon Egyetem" 
+                }
+            },
+
+            "contacts":{
+                "email": "pongraczbenedek222@gmail.com",
+                "phone": "+36703022508",
+                "github": "https://github.com/BenTheFire",
+                "linkedin": "https://www.linkedin.com/in/benedekpongracz22/"
+            },
+
             "education": {
                 "en": [
-                    { "school": "Árpád-Házi Szent Margit High School At: Kőszeg, Hungary)", "degree": "High School Diploma", "year": "Graduated: 2023" },
-                    { "school": "University of Pannonia", "degree": "B.Sc. in Computer Science", "year": "Expected Graduation: 2026" }
+                    { "school": "Árpád-Házi Szent Margit High School At: Kőszeg, Hungary", "degree": "High School Diploma", "year": "Graduated: 2023", "site":"https://arpadhazi.hu/hu/gimnazium/" },
+                    { "school": "University of Pannonia, Faculty of Information Technology", "degree": "B.Sc. in Computer Science (Ongoing)", "year": "Expected Graduation: 2026", "site":"https://mik.uni-pannon.hu/en/" }
                 ],
                 "hu": [
-                    { "school": "Árpád-Házi Szent Margit Gimnázium", "degree": "Érettségi", "year": "Érettségi éve: 2023" },
-                    { "school": "Pannon Egyetem", "degree": "Programtervező Informatikus Alapképzés", "year": "Várható végzés: 2026" }
+                    { "school": "Árpád-Házi Szent Margit Gimnázium", "degree": "Érettségi", "year": "Érettségi éve: 2023", "site":"https://arpadhazi.hu/hu/gimnazium/"},
+                    { "school": "Pannon Egyetem, Műszaki informatikai Kar", "degree": "Programtervező Informatikus Alapképzés (Jelenlegi tanulmányok)", "year": "Várható végzés: 2026", "site":"https://mik.uni-pannon.hu/" }
                 ]
-            }
+            },
+
+            "skills": {
+                "en": [
+                    { "name": "Programming in Python", "level":"Intermediate", "source": "High School/Self Tought"},
+                    { "name": "Web Development (HTML, CSS, JS)", "level":"Intermediate", "source": "University/Self Tought"},
+                    { "name": "JS Development (React, Electron)", "level":"Beginner", "source": "Self Tought"},
+                    { "name": "C# Programming", "level":"Advanced", "source": "University/Self Tought"},
+                    { "name": "Java Programming", "level":"Beginner", "source": "University"},
+                    { "name": "Object Oriented Programming", "level":"Intermediate", "source": "University"},
+                    { "name": "C Programming Language", "level":"Beginner", "source": "University"},
+                    { "name": "SQL", "level":"Intermediate", "source": "University/Self Tought"},
+                    { "name": "Git", "level":"Beginner", "source": "University/Self Tought"},
+                    { "name": "Linux", "level":"Beginner", "source": "University"},
+                    { "name": "UI and 2D development in Unity", "source": "Self Tought/Projects"},
+                    { "name": "MongoDB", "level":"Beginner", "source": "Self Tought"},
+                    { "name": "Agile Development", "level":"Intermediate", "source": "University"},
+                    { "name": "CISCO NetAcad Basic", "level":"Basic", "source": "University CISCO partnership"},
+                    { "name": "Android Development", "level":"Beginner", "source": "University"},
+                    { "name": "Teamwork", "level":"Good", "source": "High School/University/My Projects"},
+                    { "name": "Team Communication", "level":"Good", "source": "University/My Projects"},
+                    { "name": "Problem Solving", "level":"Good", "source": "High School/My Projects"},
+                    { "name": "English", "level":"B2", "source": "LanguageCert"},
+                    { "name": "Hungarian", "level":"Native", "source": "Native"},
+                ],
+                "hu": [
+                    { "name": "Python Programozás", "level":"Középhaladó", "source": "Gimnázium/Saját tanulmányok"},
+                    { "name": "Webfejlesztés (HTML, CSS, JS)", "level":"Középhaladó", "source": "Gimnázium/Saját tanulmányok"},
+                    { "name": "JavaScript Programozás (React, Electron)", "level":"Kezdő", "source": "Saját tanulmányok"},
+                    { "name": "C# Programozás", "level":"Haladó", "source": "Egyetemi/Saját tanulmányok"},
+                    { "name": "Java Programozás", "level":"Kezdő", "source": "Egyetem"},
+                    { "name": "Objektum Orientált Programozás", "level":"Középhaladó", "source": "Egyetem"},
+                    { "name": "C Programozási Nyelv", "level":"Kezdő", "source": "Egyetem"},
+                    { "name": "SQL", "level":"Középhaladó", "source": "Egyetemi/Saját tanulmányok"},
+                    { "name": "Git", "level":"Kezdő", "source": "Egyetemi/Saját tanulmányok"},
+                    { "name": "Linux", "level":"Kezdő", "source": "Egyetem"},
+                    { "name": "Felhasználói Interfész és 2D fejlesztés Unity-ben", "source": "Saját tanulmányok/Projektek"},
+                    { "name": "MongoDB", "level":"Kezdő", "source": "Saját tanulmányok/Projektek"},
+                    { "name": "Agilis Fejlesztés", "level":"Középhaladó", "source": "Egyetem"},
+                    { "name": "CISCO NetAcad Alapok", "level":"Kezdő", "source": "Egyetemi CISCO partnerkapcsolat"},
+                    { "name": "Android Fejlesztés", "level":"Kezdő", "source": "Egyetem"},
+                    { "name": "Csapatmunka", "level":"Good", "source": "Egyetem/Projektek"},
+                    { "name": "Csapat Kommunikáció", "level":"Jó", "source": "Egyetem/Projektek"},
+                    { "name": "Problémamegoldás", "level":"Jó", "source": "Egyetem/Projektek"},
+                    { "name": "Angol Nyelv", "level":"B2", "source": "LanguageCert"},
+                    { "name": "Magyar", "level":"Anyanyelvi Szint", "source": "Anyanyelv"},
+                ]
+            },
+
+            "achievements": {
+                "en": [
+                    { "name": "B2 Language Certificate in English (LanguageCert)", "time": "2022 january"},
+                    { "name": "Regional 2rd place in the OKPV Problem Solving Competition", "time": "2022 february"},
+                    { "name": "High School Diploma", "time": "2023 may"},
+                    { "name": "Morus Leadership Program - Award for Community Organizers", "time": "2023 may"},
+                ],
+                "hu": [
+                    { "name": "B2 Language Certificate in English (LanguageCert)", "time": "2022 január"},
+                    { "name": "Regionális 2. helyezet az OKPV Problémamegoldó Versenyen", "time": "2022 február"},
+                    { "name": "Érettségi", "time": "2023 május"},
+                    { "name": "Morus Vezetőképző Akadémia - Közösségszervezésői Díj ", "time": "2023 május"},
+                ]
+            },
+
+            
+
+
         };
+
+
+        // Function to load basic data
+        async function loadBasicData() {
+            try {
+                const contactsTitle = document.getElementById("contactsTitle");
+                const educationTitle = document.getElementById("educationTitle");
+                const achievementsTitle = document.getElementById("achievementsTitle");
+                const skillsTitle = document.getElementById("skillsTitle");
+
+                contactsTitle.innerText = data.res[currentLanguage].contacts;
+                educationTitle.innerText = data.res[currentLanguage].education;
+                achievementsTitle.innerText = data.res[currentLanguage].achievements;
+                skillsTitle.innerText = data.res[currentLanguage].skills;
+            } catch (error) {
+                console.error("Error loading basic data:", error);
+            }
+        }
+
+        // Function to load profile data
+        async function loadProfile() {
+            try {
+                const nameTitle = document.getElementById("nameTitle");
+                const jobTitle = document.getElementById("jobTitle");
+                const email = document.getElementById("email");
+                const phone = document.getElementById("phone");
+                const github = document.getElementById("github");
+                const linkedin = document.getElementById("linkedin");
+
+
+                nameTitle.innerText = data.profile[currentLanguage].name;
+                jobTitle.innerText = data.profile[currentLanguage].job;
+                email.innerHTML = `<a href="mailto:${data.contacts.email}"><img id="mailpic" class="iconpic" src="email-logo.svg">${data.contacts.email}</a>`;
+                phone.innerHTML = `<a href="tel:${data.contacts.phone}"><img id="phonepic" class="iconpic" src="phone-logo.svg">${data.contacts.phone}</a>`;
+                github.innerHTML = `<a href="${data.contacts.github}"><img id="githubpic" class="iconpic"  src="github-logo.svg" alt="IMG">GitHub</a>`;
+                linkedin.innerHTML = `<a href="${data.contacts.linkedin}"><img id="linkedinpic" class="iconpic" src="linkedin-logo.svg" alt="IMG">Linkedin</a>`;
+            } catch (error) {
+                console.error("Error loading profile data:", error);
+            }
+        }
 
         // Function to load education data
         async function loadEducation() {
@@ -29,7 +171,7 @@
 
                 data.education[currentLanguage].forEach(edu => {
                     const li = document.createElement("li");
-                    li.innerHTML = `<strong>${edu.degree}</strong><br>${edu.school} (${edu.year})`;
+                    li.innerHTML = `<strong><a href="${edu.site}">${edu.degree}</a></strong><br>${edu.school} (${edu.year})`;
                     educationList.appendChild(li);
                 });
             } catch (error) {
@@ -37,10 +179,50 @@
             }
         }
 
+        // Function to load skills data
+        async function loadSkills() {
+            try {
+                const skillsList = document.getElementById("skillsList");
+                skillsList.innerHTML = ""; // Clear previous content
+
+                data.skills[currentLanguage].forEach(skill => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `
+                        <strong>${skill.name}</strong>
+                        <span>${skill.level ? `${data.res[currentLanguage].level}: ${skill.level}` : ""}${skill.level && skill.source ? " | " : ""}${skill.source ? `${skill.source}` : ""}</span>
+                    `;
+                    skillsList.appendChild(li);
+                });
+            } catch (error) {
+                console.error("Error loading skills data:", error);
+            }
+        }
+
+        // Function to load achievements data
+        async function loadAchievements() {
+            try {
+                const achievementsList = document.getElementById("achievementsList");
+                achievementsList.innerHTML = ""; // Clear previous content
+
+                data.achievements[currentLanguage].forEach(ach => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `<strong>${ach.name}</strong> (${ach.time})`;
+                    achievementsList.appendChild(li);
+                });
+            } catch (error) {
+                console.error("Error loading achievements data:", error);
+            }
+        }
+
+
         // Function to switch language
         function switchLanguage(lang) {
             currentLanguage = lang;
+            loadProfile(); // Reload with new language
             loadEducation(); // Reload with new language
+            loadBasicData(); // Reload with new language
+            loadSkills(); // Reload with new language
+            loadAchievements(); // Reload with new language
         }
 
         // Function to toggle dark mode
@@ -50,6 +232,11 @@
 
         // Load education data on page load
         document.addEventListener("DOMContentLoaded", loadEducation);
+        document.addEventListener("DOMContentLoaded", loadProfile);
+        document.addEventListener("DOMContentLoaded", loadBasicData);
+        document.addEventListener("DOMContentLoaded", loadSkills);
+        document.addEventListener("DOMContentLoaded", loadAchievements);
+
     </script>
     
     <style>
@@ -80,19 +267,44 @@
         }
 
         #profileContainer {
-            display: flex; /* Flexbox layout */
-            align-items: center;  /* Align items vertically */
-            justify-content: center; /* Center content */
-            gap: 20px;  /* Space between image and text */
-            text-align: left; 
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px; /* Reduced gap */
+            text-align: left;
             margin: auto;
             width: 60%;
-            padding: 20px;
+            padding: 15px; /* Reduced padding */
             background-color: var(--box-color);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin-top: 15px; /* Reduced margin */
+            margin-bottom: 15px; /* Reduced margin */
+        }
+
+        #profileLeft {
+            display: flex;
+            align-items: center; /* Align items vertically */
+            gap: 15px; /* Add spacing between the picture and text */
+        }
+
+        #profileRight {
+            text-align: left; /* Align text to the left */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            gap: 5px; /* Add spacing between items */
+        }
+
+        #profileRight p {
+            display: flex;
+            align-items: center; /* Align icons and text vertically */
+            gap: 8px; /* Add spacing between icon and text */
+            margin: 0; /* Remove vertical margin */
+            line-height: 1.5; /* Adjust line height for better spacing */
+        }
+
+        #profileRight h2 {
+            margin-bottom: 5px; /* Reduced margin below the heading */
         }
 
         #profilePicture {
@@ -106,9 +318,18 @@
         #profileText {
             display: flex;
             flex-direction: column;
+            justify-content: center; /* Center text vertically relative to the picture */
         }
 
-        #educationsContainer {
+        #profileText h1 {
+            margin: 0; /* Remove default margin for better alignment */
+        }
+
+        #profileText p {
+            margin: 0; /* Remove default margin for better alignment */
+        }
+
+        .container {
             width: 60%;
             margin: auto;
             padding: 20px;
@@ -119,24 +340,37 @@
             text-align: left;
         }
 
-        #educationsContainer h2 {
+        .container h2 {
             font-size: 1.8em;
             margin-bottom: 10px;
         }
 
-        #educationList {
+        .container ul {
             list-style-type: none;
             padding: 0;
+            margin: 0; /* Remove extra spacing */
         }
 
-        #educationList li {
-            font-size: 1.2em;
-            background: var(--education-li-background);
-            color: var(--education-li-color);
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .container li {
+            padding: 10px 0; /* Add vertical padding */
+            border-bottom: 1px solid var(--text-color); /* Add a subtle divider */
+            font-size: 1em; /* Standardize font size */
+            color: var(--text-color); /* Use text color for consistency */
+        }
+
+        .container li:last-child {
+            border-bottom: none; /* Remove divider for the last item */
+        }
+
+        .container li strong {
+            font-weight: bold; /* Highlight important text */
+        }
+
+        .container li span {
+            display: block; /* Stack additional details below the main text */
+            font-size: 0.9em; /* Smaller font for details */
+            color: var(--text-color); /* Use consistent text color */
+            margin-top: 5px; /* Add spacing above details */
         }
 
         #controls {
@@ -202,22 +436,157 @@
         input:checked + .slider:before {
             transform: translateX(14px);
         }
+
+        /* Light theme link styles */
+        a {
+            color: #5a5a5a; /* Lighter than default */
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #007BFF; /* Light blue on hover */
+        }
+
+        a:active {
+            color: #0056b3; /* Darker blue when clicked */
+        }
+
+        a:visited {
+            color: #4a4a4a; /* Slightly darker than default */
+        }
+
+        /* Dark theme link styles */
+        .dark-mode a {
+            color: #b5b5b5; /* Lighter in dark mode */
+        }
+
+        .dark-mode a:hover {
+            color: #66b2ff; /* Light blue on hover */
+        }
+
+        .dark-mode a:active {
+            color: #3399cc; /* Darker blue when clicked */
+        }
+
+        .dark-mode a:visited {
+            color: #a0a0a0; /* Slightly darker than default */
+        }
+
+        .iconpic {
+            width: 16px; /* Set a small width for the icons */
+            height: 16px; /* Set a small height for the icons */
+            vertical-align: middle; /* Align icons with text */
+            margin-right: 5px; /* Add spacing between icon and text */
+        }
+
+        #skillsList li {
+            display: flex;
+            justify-content: space-between; /* Separate skill name and details */
+            align-items: center; /* Align items vertically */
+            padding: 10px 0; /* Add vertical padding */
+            border-bottom: 1px solid var(--text-color); /* Add a subtle border */
+        }
+
+        #skillsList li:last-child {
+            border-bottom: none; /* Remove border for the last item */
+        }
+
+        #skillsList li strong {
+            font-size: 1em; /* Keep skill name prominent but not oversized */
+        }
+
+        #skillsList li span {
+            font-size: 0.85em; /* Smaller font for details */
+            color: var(--text-color);
+            text-align: right; /* Align details to the right */
+        }
+
+        #educationList li {
+            font-size: 1.2em;
+            background: var(--education-li-background); /* Retain the box background */
+            color: var(--education-li-color);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+        }
+
+        #educationList li a {
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Inherit text color */
+        }
+
+        #educationList li a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        #achievementsList {
+            position: relative;
+            margin: 20px 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #achievementsList::before {
+            content: "";
+            position: absolute;
+            left: 40px; /* Adjusted to align with markers */
+            top: 0;
+            bottom: 0;
+            width: 2px; /* Thinner line for better alignment */
+            background-color: var(--text-color); /* Vertical line for the timeline */
+        }
+
+        #achievementsList li {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 80px; /* Increased space for better alignment */
+        }
+
+        #achievementsList li::before {
+            content: "";
+            position: absolute;
+            left: 32px; /* Adjusted to align with the timeline line */
+            top: 50%; /* Center marker vertically */
+            transform: translateY(-50%); /* Ensure proper centering */
+            width: 12px;
+            height: 12px;
+            background-color: var(--text-color); /* Circle marker */
+            border-radius: 50%;
+        }
+
+        #achievementsList li strong {
+            font-size: 1.1em;
+            font-weight: bold;
+            display: block; /* Ensure the title is on its own line */
+        }
+
+        #achievementsList li span {
+            font-size: 0.9em;
+            color: var(--text-color);
+            margin-top: 5px;
+            display: block; /* Ensure the time is on its own line */
+        }
     </style>
 </head>
 <body>
     <!-- Profile Section -->
     <div id="profileContainer">
-        <img id="profilePicture" src="profilePicture.jpg" alt="Self Picture">
-        <div id="profileText">
-            <h1 id="nameTitle">Pongrácz Benedek</h1>
-            <p id="jobTitle">Junior Web Developer</p>
+        <div id="profileLeft">
+            <img id="profilePicture" src="profilePicture.jpg" alt="Self Picture">
+            <div id="profileText">
+                <h1 id="nameTitle">Pongrácz Benedek</h1>
+                <p id="jobTitle">jobtitle</p>
+            </div>
         </div>
-    </div>
-
-    <!-- Education Section -->
-    <div id="educationsContainer">
-        <h2>Education</h2>
-        <ul id="educationList"></ul>
+        <div id="profileRight">
+            <h2 id="contactsTitle">Contacts</h2>
+            <p id="email">EmailDynamicNotLoaded</p>
+            <p id="phone">PhoneDynamicNotLoaded</p>
+            <p id="github">GithubDynamicNotLoaded</p>
+            <p id="linkedin">LinkedInDynamicNotLoaded</p>
+        </div>
     </div>
 
      <!-- Buttons in top right corner -->
@@ -232,5 +601,25 @@
             <span class="slider round"></span>
         </label>
     </div>
+
+    <!-- Education Section -->
+    <div id="educationsContainer" class="container">
+        <h2 id="educationTitle">Education</h2>
+        <ul id="educationList"></ul>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skillsContainer" class="container">
+        <h2 id="skillsTitle">Skills and Competencies</h2>
+        <ul id="skillsList"></ul>
+    </div>
+
+    <!-- Achievements Section -->
+    <div id="achievementsContainer" class="container">
+        <h2 id="achievementsTitle">Achievements and Competitions</h2>
+        <ul id="achievementsList"></ul>
+    </div>
+    
+    
 </body>
 </html>
