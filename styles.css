@@ -330,3 +330,46 @@ a:focus, button:focus, input:focus {
     outline: 2px solid #007BFF; /* Visible focus outline */
     outline-offset: 2px;
 }
+
+#projectsList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#projectsList li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: var(--box-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#projectsList li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#projectsList li strong {
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#projectsList li span {
+    font-size: 0.9em;
+    color: var(--text-color);
+    display: block;
+    margin-top: 5px;
+}
+
+#projectsList li a {
+    text-decoration: none;
+    color: #007BFF;
+    transition: color 0.3s;
+}
+
+#projectsList li a:hover {
+    color: #0056b3;
+}

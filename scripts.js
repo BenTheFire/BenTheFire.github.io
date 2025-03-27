@@ -1,21 +1,23 @@
 let currentLanguage = 'en'; // Default language
 
-// Data for profile and education, made for scalability and easy translation
-let data = {
+// Embedded JSON data
+const data = {
     "res": {
         "en": {
             "contacts": "Contacts",
             "education": "Education",
             "achievements": "Achievements",
             "skills": "Skills and Competencies",
-            "level": "Level",
+            "projects": "Projects",
+            "level": "Level"
         },
         "hu": {
             "contacts": "Elérhetőségek",
             "education": "Tanulmányok",
             "achievements": "Eredmények",
             "skills": "Képességek és Kompetenciák",
-            "level": "Szint",
+            "projects": "Projektek",
+            "level": "Szint"
         }
     },
     "profile": {
@@ -56,7 +58,7 @@ let data = {
             { "name": "SQL", "level": "Intermediate", "source": "University/Self Tought" },
             { "name": "Git", "level": "Beginner", "source": "University/Self Tought" },
             { "name": "Linux", "level": "Beginner", "source": "University" },
-            { "name": "UI and 2D development in Unity", "source": "Self Tought/Projects" },
+            { "name": "UI and 2D development in Unity",  "level":"Basic", "source": "Self Tought/Projects" },
             { "name": "MongoDB", "level": "Beginner", "source": "Self Tought" },
             { "name": "Agile Development", "level": "Intermediate", "source": "University" },
             { "name": "CISCO NetAcad Basic", "level": "Basic", "source": "University CISCO partnership" },
@@ -78,7 +80,7 @@ let data = {
             { "name": "SQL", "level": "Középhaladó", "source": "Egyetemi/Saját tanulmányok" },
             { "name": "Git", "level": "Kezdő", "source": "Egyetemi/Saját tanulmányok" },
             { "name": "Linux", "level": "Kezdő", "source": "Egyetem" },
-            { "name": "Felhasználói Interfész és 2D fejlesztés Unity-ben", "source": "Saját tanulmányok/Projektek" },
+            { "name": "Felhasználói Interfész és 2D fejlesztés Unity-ben", "level":"Kezdő", "source": "Saját tanulmányok/Projektek" },
             { "name": "MongoDB", "level": "Kezdő", "source": "Saját tanulmányok/Projektek" },
             { "name": "Agilis Fejlesztés", "level": "Középhaladó", "source": "Egyetem" },
             { "name": "CISCO NetAcad Alapok", "level": "Kezdő", "source": "Egyetemi CISCO partnerkapcsolat" },
@@ -113,11 +115,13 @@ async function loadBasicData() {
         const educationTitle = document.getElementById("educationTitle");
         const achievementsTitle = document.getElementById("achievementsTitle");
         const skillsTitle = document.getElementById("skillsTitle");
+        const projectsTitle = document.getElementById("projectsTitle");
 
         contactsTitle.innerText = data.res[currentLanguage].contacts;
         educationTitle.innerText = data.res[currentLanguage].education;
         achievementsTitle.innerText = data.res[currentLanguage].achievements;
         skillsTitle.innerText = data.res[currentLanguage].skills;
+        projectsTitle.innerText = data.res[currentLanguage].projects;
     } catch (error) {
         console.error("Error loading basic data:", error);
     }
@@ -137,8 +141,8 @@ async function loadProfile() {
         jobTitle.innerText = data.profile[currentLanguage].job;
         email.innerHTML = `<a href="mailto:${data.contacts.email}"><img id="mailpic" class="iconpic" src="resources/email-logo.svg">${data.contacts.email}</a>`;
         phone.innerHTML = `<a href="tel:${data.contacts.phone}"><img id="phonepic" class="iconpic" src="resources/phone-logo.svg">${data.contacts.phone}</a>`;
-        github.innerHTML = `<a href="${data.contacts.github}"><img id="githubpic" class="iconpic" src="resources/github-logo.svg" alt="IMG">GitHub</a>`;
-        linkedin.innerHTML = `<a href="${data.contacts.linkedin}"><img id="linkedinpic" class="iconpic" src="resources/linkedin-logo.svg" alt="IMG">Linkedin</a>`;
+        github.innerHTML = `<a href="${data.contacts.github}"><img id="githubpic" class="iconpic" src="resources/github-logo.svg" alt="GitHub">GitHub</a>`;
+        linkedin.innerHTML = `<a href="${data.contacts.linkedin}"><img id="linkedinpic" class="iconpic" src="resources/linkedin-logo.svg" alt="LinkedIn">LinkedIn</a>`;
     } catch (error) {
         console.error("Error loading profile data:", error);
     }
@@ -152,7 +156,7 @@ async function loadEducation() {
 
         data.education[currentLanguage].forEach(edu => {
             const li = document.createElement("li");
-            li.innerHTML = `<strong><a href="${edu.site}">${edu.degree}</a></strong><br>${edu.school} (${edu.year})`;
+            li.innerHTML = `<strong><a href="${edu.site}" target="_blank" rel="noopener noreferrer">${edu.degree}</a></strong><br>${edu.school} (${edu.year})`;
             educationList.appendChild(li);
         });
     } catch (error) {
@@ -198,11 +202,11 @@ async function loadAchievements() {
 // Function to switch language
 function switchLanguage(lang) {
     currentLanguage = lang;
-    loadProfile(); // Reload with new language
-    loadEducation(); // Reload with new language
-    loadBasicData(); // Reload with new language
-    loadSkills(); // Reload with new language
-    loadAchievements(); // Reload with new language
+    loadBasicData();
+    loadProfile();
+    loadEducation();
+    loadSkills();
+    loadAchievements();
 }
 
 // Function to toggle dark mode
@@ -210,9 +214,18 @@ function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
 }
 
+// Function to fetch data
+async function fetchData() {
+    try {
+        await loadBasicData();
+        await loadProfile();
+        await loadEducation();
+        await loadSkills();
+        await loadAchievements();
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
 // Load data on page load
-document.addEventListener("DOMContentLoaded", loadEducation);
-document.addEventListener("DOMContentLoaded", loadProfile);
-document.addEventListener("DOMContentLoaded", loadBasicData);
-document.addEventListener("DOMContentLoaded", loadSkills);
-document.addEventListener("DOMContentLoaded", loadAchievements);
+document.addEventListener("DOMContentLoaded", fetchData);
