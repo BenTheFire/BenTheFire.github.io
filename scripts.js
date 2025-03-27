@@ -107,7 +107,7 @@ const data = {
         ]
     },
     "projects": {
-        en: [
+        "en": [
             {
                 "name": "Portfolio Website",
                 "description": "My personal portfolio website, created with HTML, CSS and JavaScript.",
@@ -135,6 +135,38 @@ const data = {
             {
                 "name": "Rfejl-Team16",
                 "description": "A project for the university, where we created a web application for a made-up company.",
+                "link": "https://github.com/BenTheFire/Rfejl-Team16",
+                "state": "1"
+            }
+        ],
+        "hu": [
+            {
+                "name": "Portfólió Weboldal",
+                "description": "A személyes portfólió weboldalam, HTML, CSS és JavaScript segítségével.",
+                "link": "https://github.com/BenTheFire/BenTheFire.github.io/",
+                "state": "1"
+            },
+            {
+                "name": "Fae's DM Tools",
+                "description": "Egy discord automatizációs eszköz D&D Dungeon Mastereknek, discord.py segítségével.",
+                "link": "https://github.com/BenTheFire/FsNT2o",
+                "state": "1"
+            },
+            {
+                "name": "Project Hondo",
+                "description": "Egy 3D videojáték projekt, C# és Unity segítségével, ahol az UI és a Dizájn Koncepció fejlesztéseken dolgozom.",
+                "link": "Kiadásra vár",
+                "state": "0"
+            },
+            {
+                "name": "Overwolf-Electron-ThunderOfHeroes",
+                "description": "Egy projekt az Overwolf API használatával, hogy egy Electron alkalmazást készítsek a Heroes of the Storm játékhoz.",
+                "link": "Fejlesztés leállt az API változások miatt",
+                "state": "0"
+            },
+            {
+                "name": "Rfejl-Team16",
+                "description": "Egy projekt az egyetemre, ahol egy webalkalmazást készítettünk egy kitalált cégnek.",
                 "link": "https://github.com/BenTheFire/Rfejl-Team16",
                 "state": "1"
             }
