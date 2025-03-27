@@ -7,11 +7,11 @@
 }
 
 .dark-mode {
-    --bg-color: #1e1e1e;
-    --text-color: #ffffff;
-    --box-color: #333333;
-    --education-li-background: #222222;
-    --education-li-color: #ffffff;
+    --bg-color: #121212;
+    --text-color: #E0E0E0;
+    --box-color: #1E1E1E;
+    --education-li-background: #2A2A2A;
+    --education-li-color: #FFFFFF;
 }
 
 body {
@@ -323,4 +323,10 @@ a:visited {
     color: var(--text-color);
     margin-top: 5px;
     display: block;
+}
+
+/* Focus Indicators */
+a:focus, button:focus, input:focus {
+    outline: 2px solid #007BFF; /* Visible focus outline */
+    outline-offset: 2px;
 }
