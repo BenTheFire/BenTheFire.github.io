@@ -259,6 +259,8 @@ a:visited {
 }
 
 #educationList li {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Align items vertically */
     font-size: 1.2em;
     background: var(--education-li-background);
     color: var(--education-li-color);
@@ -268,13 +270,28 @@ a:visited {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#educationList li a {
-    text-decoration: none;
-    color: inherit;
+#educationList li img.school-logo {
+    flex-shrink: 0; /* Prevent the logo from shrinking */
+    width: 50px; /* Adjust size for better visibility */
+    height: 50px;
+    margin-right: 15px; /* Add spacing between logo and text */
+    border-radius: 5px;
+    object-fit: cover;
 }
 
-#educationList li a:hover {
-    text-decoration: underline;
+#educationList li div.education-text {
+    display: flex;
+    flex-direction: column; /* Stack degree and school name vertically */
+    gap: 5px; /* Add spacing between degree and school name */
+}
+
+#educationList li div.education-text a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
+}
+
+#educationList li div.education-text a:hover {
+    text-decoration: underline; /* Add underline on hover */
 }
 
 #achievementsList {
@@ -372,4 +389,42 @@ a:focus, button:focus, input:focus {
 
 #projectsList li a:hover {
     color: #0056b3;
+}
+
+.school-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    vertical-align: middle;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.education-item {
+    background-color: #f9f9f9; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 15px; /* Add some padding */
+    margin-bottom: 15px; /* Space between items */
+    display: flex; /* Align content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.education-item .school-logo {
+    width: 50px; /* Adjust logo size */
+    height: 50px;
+    margin-right: 15px; /* Space between logo and text */
+}
+
+.education-item .education-text {
+    flex: 1; /* Allow text to take remaining space */
+}
+
+.education-item a {
+    color: #007BFF; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.education-item a:hover {
+    text-decoration: underline; /* Add underline on hover */
 }

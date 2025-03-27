@@ -38,12 +38,12 @@ const data = {
     },
     "education": {
         "en": [
-            { "school": "Árpád-Házi Szent Margit High School At: Kőszeg, Hungary", "degree": "High School Diploma", "year": "Graduated: 2023", "site": "https://arpadhazi.hu/hu/gimnazium/" },
-            { "school": "University of Pannonia, Faculty of Information Technology", "degree": "B.Sc. in Computer Science (Ongoing)", "year": "Expected Graduation: 2026", "site": "https://mik.uni-pannon.hu/en/" }
+            { "school": "Árpád-Házi Szent Margit High School At: Kőszeg, Hungary", "degree": "High School Diploma", "year": "Graduated: 2023", "site": "https://arpadhazi.hu/hu/gimnazium/", "schoolLogo": "aszmg.png" },
+            { "school": "University of Pannonia, Faculty of Information Technology", "degree": "B.Sc. in Computer Science (Ongoing)", "year": "Expected Graduation: 2026", "site": "https://mik.uni-pannon.hu/en/", "schoolLogo": "pannon.jpg" }
         ],
         "hu": [
-            { "school": "Árpád-Házi Szent Margit Gimnázium", "degree": "Érettségi", "year": "Érettségi éve: 2023", "site": "https://arpadhazi.hu/hu/gimnazium/" },
-            { "school": "Pannon Egyetem, Műszaki informatikai Kar", "degree": "Programtervező Informatikus Alapképzés (Jelenlegi tanulmányok)", "year": "Várható végzés: 2026", "site": "https://mik.uni-pannon.hu/" }
+            { "school": "Árpád-Házi Szent Margit Gimnázium", "degree": "Érettségi", "year": "Érettségi éve: 2023", "site": "https://arpadhazi.hu/hu/gimnazium/", "schoolLogo": "aszmg.png" },
+            { "school": "Pannon Egyetem, Műszaki informatikai Kar", "degree": "Programtervező Informatikus Alapképzés (Jelenlegi tanulmányok)", "year": "Várható végzés: 2026", "site": "https://mik.uni-pannon.hu/", "schoolLogo": "pannon.jpg" }
         ]
     },
     "skills": {
@@ -105,6 +105,40 @@ const data = {
             { "name": "Érettségi", "time": "2023 május" },
             { "name": "Morus Vezetőképző Akadémia - Közösségszervezésői Díj", "time": "2023 május" }
         ]
+    },
+    "projects": {
+        en: [
+            {
+                "name": "Portfolio Website",
+                "description": "My personal portfolio website, created with HTML, CSS and JavaScript.",
+                "link": "https://github.com/BenTheFire/BenTheFire.github.io/",
+                "state": "1"
+            },
+            {
+                "name": "Fae's DM Tools",
+                "description": "A discord bot for D&D Dungeon Masters, created with discord.py",
+                "link": "https://github.com/BenTheFire/FsNT2o",
+                "state": "1"
+            },
+            {
+                "name": "Project Hondo",
+                "description": "A 3D video game project, created with C# and Unity, where I work on the UI and Concepts-Development.",
+                "link": "To be released",
+                "state": "0"
+            },
+            {
+                "name": "Overwolf-Electron-ThunderOfHeroes",
+                "description": "A project about using the Overwolf API to create an Electron app for the game Heroes of the Storm.",
+                "link": "Development Ended Due to API Changes",
+                "state": "0"
+            },
+            {
+                "name": "Rfejl-Team16",
+                "description": "A project for the university, where we created a web application for a made-up company.",
+                "link": "https://github.com/BenTheFire/Rfejl-Team16",
+                "state": "1"
+            }
+        ]
     }
 };
 
@@ -156,7 +190,14 @@ async function loadEducation() {
 
         data.education[currentLanguage].forEach(edu => {
             const li = document.createElement("li");
-            li.innerHTML = `<strong><a href="${edu.site}" target="_blank" rel="noopener noreferrer">${edu.degree}</a></strong><br>${edu.school} (${edu.year})`;
+            li.classList.add("education-item");
+            li.innerHTML = `
+                <img src="resources/${edu.schoolLogo}" alt="${edu.school} logo" class="school-logo">
+                <div class="education-text">
+                    <strong><a href="${edu.site}" target="_blank" rel="noopener noreferrer">${edu.degree}</a></strong>
+                    <span>${edu.school} (${edu.year})</span>
+                </div>
+            `;
             educationList.appendChild(li);
         });
     } catch (error) {
@@ -199,14 +240,37 @@ async function loadAchievements() {
     }
 }
 
+// Function to load projects data
+async function loadProjects() {
+    try {
+        const projectsList = document.getElementById("projectsList");
+        projectsList.innerHTML = ""; // Clear previous content
+
+        data.projects[currentLanguage].forEach(proj => {
+            const li = document.createElement("li");
+            if (proj.state === "1") {
+                li.innerHTML = `
+                <strong>${proj.name}</strong>
+                <span>${proj.description}</span>
+                <span>GitHub: <a href="${proj.link}">${proj.link}</a></span>`;
+            }
+            else {
+                li.innerHTML = `
+                <strong>${proj.name}</strong>
+                <span>${proj.description}</span>
+                <span>${proj.link}</span>`;
+            }
+            projectsList.appendChild(li);
+        });
+    } catch (error) {
+        console.error("Error loading projects data:", error);
+    }
+}
+
 // Function to switch language
 function switchLanguage(lang) {
     currentLanguage = lang;
-    loadBasicData();
-    loadProfile();
-    loadEducation();
-    loadSkills();
-    loadAchievements();
+    fetchData();
 }
 
 // Function to toggle dark mode
@@ -214,7 +278,7 @@ function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
 }
 
-// Function to fetch data
+// Function to fetch and load all data
 async function fetchData() {
     try {
         await loadBasicData();
@@ -222,6 +286,7 @@ async function fetchData() {
         await loadEducation();
         await loadSkills();
         await loadAchievements();
+        await loadProjects();
     } catch (error) {
         console.error("Error fetching data:", error);
     }
