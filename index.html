@@ -23,11 +23,12 @@
     <!-- Header/Navigation -->
     <header class="sticky top-0 z-50 bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
         <nav class="container mx-auto p-4 flex items-center justify-between">
-            <a href="#hero" class="text-xl font-bold text-indigo-400">Benedek Pongracz</a>
+            <a href="#hero" class="text-xl font-bold text-indigo-400">Your Name</a>
             <div class="space-x-4 flex">
-                <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
-                <a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a>
-                <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
+                <!-- Added a class 'smooth-scroll' to all links that should have the smooth scroll effect -->
+                <a href="#about" class="smooth-scroll hover:text-indigo-400 transition-colors">About</a>
+                <a href="#projects" class="smooth-scroll hover:text-indigo-400 transition-colors">Projects</a>
+                <a href="#contact" class="smooth-scroll hover:text-indigo-400 transition-colors">Contact</a>
             </div>
         </nav>
     </header>
@@ -42,7 +43,7 @@
             <p class="text-xl md:text-2xl text-gray-300 font-medium mb-8">
                 I'm a <span class="text-white">developer</span> with a passion for all things IT.
             </p>
-            <a href="#projects" class="px-8 py-3 bg-indigo-600 text-white font-bold rounded-full shadow-lg hover:bg-indigo-700 transition-colors transform hover:scale-105">
+            <a href="#projects" class="smooth-scroll px-8 py-3 bg-indigo-600 text-white font-bold rounded-full shadow-lg hover:bg-indigo-700 transition-colors transform hover:scale-105">
                 View My Work
             </a>
         </section>
@@ -52,13 +53,13 @@
             <h2 class="text-4xl font-bold text-center mb-12 text-white">About Me</h2>
             <div class="max-w-4xl mx-auto bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
                 <p class="text-lg text-gray-300 leading-relaxed mb-4">
-                    Hello! My name is **Benedek**. I am a **developer** with expertise in **python based app building**.
+                    Hello! My name is Benedek. I am a developer with expertise in python based app building.
                 </p>
                 <p class="text-lg text-gray-300 leading-relaxed mb-4">
                     I love creating new apps and creative solutions.
                 </p>
                 <p class="text-lg text-gray-300 leading-relaxed">
-                    When I'm not coding, I enjoy **hiking, video games, and teaching IT**. I'm always open to new opportunities and collaborations, so feel free to get in touch!
+                    When I'm not coding, I enjoy hiking, video games, and teaching IT. I'm always open to new opportunities and collaborations, so feel free to get in touch!
                 </p>
             </div>
         </section>
@@ -167,5 +168,31 @@
     <footer class="bg-gray-800 text-center py-6">
         <p class="text-sm text-gray-400">&copy; 2024 Benedek Pongracz. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for smooth scrolling on all anchor links with the 'smooth-scroll' class -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const smoothScrollLinks = document.querySelectorAll('.smooth-scroll');
+
+            smoothScrollLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Prevent the default anchor link behavior
+                    e.preventDefault();
+
+                    // Get the ID of the target section from the href attribute
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    // If the target section exists, scroll to it smoothly
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
