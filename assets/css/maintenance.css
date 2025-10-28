@@ -1,0 +1,57 @@
+/* File: assets/css/maintenance.css */
+:root{
+    --bg1:#05696b;
+    --bg2:#c0c0c0;
+    --text:#d9d9d9;
+    --muted:rgba(217,217,217,0.75);
+    --card:rgba(0,0,0,0.18);
+    --accent:#05696b;
+    --radius:14px;
+    --container:940px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    background:linear-gradient(180deg,var(--bg1),var(--bg2));
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    font-size:16px;
+    padding:2rem;
+}
+
+.center{width:100%;max-width:var(--container);text-align:center}
+.panel{
+    background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border-radius:var(--radius);
+    padding:2.25rem;
+    box-shadow:0 8px 30px rgba(0,0,0,0.25);
+    border:1px solid rgba(0,0,0,0.12);
+    display:inline-block;
+    min-width:320px;
+}
+
+.headline{margin:0 0 .5rem;font-size:clamp(1.6rem,3.6vw,2.4rem);color:#f6f7f8}
+.sub{margin:.25rem 0;color:var(--muted)}
+.target a{color:var(--text);text-decoration:underline;font-weight:700}
+
+.note{margin:1rem 0;color:var(--muted);font-size:1rem}
+.actions{display:flex;gap:.75rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+.btn{
+    display:inline-block;padding:.6rem 1rem;border-radius:10px;text-decoration:none;font-weight:700;background:linear-gradient(90deg,var(--accent),#028080);color:white
+}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--text)}
+
+.foot{margin-top:1rem;color:var(--muted);font-size:.95rem}
+
+/* smaller screens */
+@media (max-width:520px){
+    .panel{padding:1.25rem}
+    .actions{flex-direction:column}
+}
